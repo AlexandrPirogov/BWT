@@ -16,7 +16,7 @@ public:
 		down_tree = new BinaryTree(deep, colors_count);
 		get_leafs(down_tree_leafs, *down_tree);
 		get_leafs(up_tree_leafs, *up_tree);
-
+		link_trees(this->up_tree_leafs, this->down_tree_leafs);
 	};
 
 private:
@@ -40,4 +40,12 @@ private:
 	bool are_leafs_connected(std::vector<Node*>& leafs);
 
 	void link_nodes(Node* up_tree, Node* down_tree);
+
+	void link_up_to_left(Node* up_node, Node* left_down_node);
+
+	void link_up_to_right(Node* up_node, Node* right_down_node);
+
+	void link_down_to_left(Node* down_node, Node* left_up_node);
+
+	void link_down_to_right(Node* down_node, Node* left_up_node);
 };
