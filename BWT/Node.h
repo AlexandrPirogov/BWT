@@ -9,6 +9,11 @@ public:
 	Branch* left_branch;
 	Branch* right_branch;
 	Branch* parent_branch;
+
+	Branch* parent_left_branch;
+	Branch* parent_right_branch;
+
+
 	std::string value;
 	Node() { left_branch = nullptr; right_branch = nullptr; parent_branch; };
 

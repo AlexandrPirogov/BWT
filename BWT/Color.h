@@ -1,14 +1,13 @@
 #pragma once
+#include <string>
 
-enum class Color {
-	none = 0, 
-	red =1, 
-	yellow=2, 
-	black=3, 
-	blue=4, 
-	white=5, 
-	puprle=6, 
-	green=7, 
-	gray=8, 
-	orange=9
+struct Color {
+	const std::string none = "none";
+	const std::string red = "red";
+	const std::string blue = "blue";
+	const std::string orange = "orange";
+	const std::string yellow = "yellow";
+	const std::string white = "white";
+	const std::string gray = "gray";
+	const std::string green = "green";
 };

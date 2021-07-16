@@ -9,7 +9,6 @@
 
 class Node;
 class Branch;
-enum class Color;
 
 class BinaryTree {
 public:
@@ -31,7 +30,7 @@ private:
 
 	int deep;
 	int colors_count;
-	std::vector<Color> tree_colors;
+	std::vector<std::string> tree_colors = {"red", "yellow", "blue", "black", "white", "green", "green"};
 
 	void create_tree(Node* node,int current_deep);
 
@@ -47,8 +46,12 @@ private:
 
 	void color_tree(Node* node, int& colors_count);
 
-	void choose_colors(std::vector<Color>& vec, int colors_count);
+	void choose_colors(std::vector<std::string>& vec, int colors_count);
 
-	Color random_color(std::vector<Color>& vec);
+	std::string random_color(std::vector<std::string>& vec);
+
+	void color_left_branch(Node* node);
+
+	void color_right_branch(Node* node);
 
 };

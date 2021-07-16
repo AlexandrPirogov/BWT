@@ -21,6 +21,9 @@
     <ClCompile Include="BinaryTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BWT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryTree.h">
@@ -33,6 +36,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tree_linker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BWT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

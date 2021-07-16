@@ -43,7 +43,6 @@ void BinaryTree::add_right_node(Node* parent, int current_deep)
 
 void BinaryTree::get_spaces(int& spaces, int& deep)
 {
-
 	for (int i = 0; i < deep; i++)
 		spaces += std::pow(2, i);
 }
@@ -82,36 +81,14 @@ void BinaryTree::color_tree(Node* node, int& colors_count)
 {
 	if (node != nullptr	) {
 		if (node->left_branch != nullptr) {
-			if (node->left_branch->color == 0) {
-				Color color = this->random_color(this->tree_colors);
-				if (node != this->root) {
-					while (color == *node->parent_branch->color) {
-						color = this->random_color(this->tree_colors);
-					}
-					node->left_branch->color = &color;
-				}
-				else {
-					node->left_branch->color = &color;
-				}
+			if (node->left_branch->color == "") {
+				color_left_branch(node);
 			}
 			color_tree(node->left_branch->child_node, colors_count);
 		}
 		if (node->right_branch != nullptr) {
-			if (node->right_branch->color == 0) {
-				Color color = this->random_color(this->tree_colors);
-				if (node != this->root) {
-					while (color == *node->parent_branch->color || color == *node->left_branch->color) {
-						color = this->random_color(this->tree_colors);
-					}
-					node->right_branch->color = &color;
-				}
-				else {
-					while (color == *node->left_branch->color ) {
-						color = this->random_color(this->tree_colors);
-					}
-					node->right_branch->color = &color;
-				}
-				
+			if (node->right_branch->color == "") {
+				color_right_branch(node);
 			}
 			color_tree(node->right_branch->child_node, colors_count);
 		}
@@ -119,19 +96,49 @@ void BinaryTree::color_tree(Node* node, int& colors_count)
 
 }
 
-void BinaryTree::choose_colors(std::vector<Color>& vec, int colors_count)
+void BinaryTree::choose_colors(std::vector<std::string>& vec, int colors_count)
 {
-	Color colors;
+	std::string colors;
 	for (int i = 1; i < colors_count+1; i++) {
-		colors = static_cast<Color>(i);
+		colors = this->tree_colors[i];
 		vec.push_back(colors);
 	}
 }
 
-Color BinaryTree::random_color(std::vector<Color>& vec)
+std::string BinaryTree::random_color(std::vector<std::string>& vec)
 {
 	int ran = rand() % vec.size();
 	return vec[ran];
+}
+
+void BinaryTree::color_left_branch(Node* node)
+{
+	std::string color = this->random_color(this->tree_colors);
+	if (node != this->root) {
+		while (color == node->parent_branch->color) {
+			color = this->random_color(this->tree_colors);
+		}
+		node->left_branch->color = color;
+	}
+	else {
+		node->left_branch->color = color;
+	}
+}
+
+void BinaryTree::color_right_branch(Node* node) {
+	std::string color = this->random_color(this->tree_colors);
+	if (node != this->root) {
+		while (color == node->parent_branch->color || color == node->left_branch->color) {
+			color = this->random_color(this->tree_colors);
+		}
+		node->right_branch->color = color;
+	}
+	else {
+		while (color == node->left_branch->color) {
+			color = this->random_color(this->tree_colors);
+		}
+		node->right_branch->color = color;
+	}
 }
 
 void BinaryTree::show_colors(Node* node)

@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-	BinaryTree b_tree(3, 4);
+	BinaryTree b_tree(2, 4);
 	b_tree.tree_seach(b_tree.root);
 	for (int i = 0; i < b_tree.vec.size(); i++)
 		std::cout << b_tree.vec[i] << " ";
